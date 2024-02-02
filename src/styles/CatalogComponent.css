@@ -22,6 +22,8 @@
   line-height: 24px;
   text-align: center;
   outline: none;
+  background: transparent;
+  margin-bottom: 20px;
 }
 
 .load-more-button:hover {

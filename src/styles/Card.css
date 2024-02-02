@@ -3,7 +3,6 @@
   width: 274px;
   height: 426px;
   overflow: hidden;
-  /* margin-bottom: 14px; */
 }
 
 .card-image-container {
@@ -32,13 +31,21 @@
 }
 
 .card-content {
-  /* padding: 16px; */
+  text-align: left;
 }
 
-.card h3 {
-  margin: 0 0 10px 0;
+.card .car {
+  margin-top: 16px;
+  font-family: Manrope;
   color: #333;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.car .price {
+  margin-right: 11px;
 }
 
 .card p {

@@ -24,11 +24,14 @@ function Card({ car }) {
                     {isFavorite ? '❤️' : '🤍'}
                 </div>
             </div>
-            <div className="card-content">
-                <h3>
-                    {car.make} <span style={{ color: '#3470FF' }}>{car.model}</span>, {car.year} {car.rentalPrice}
-                </h3>
-                <p>
+            <div>
+                <p className="car">
+                    <span>
+                        {car.make} <span style={{ color: '#3470FF' }}>{car.model}</span>, {car.year}
+                    </span>
+                    <span className="price">{car.rentalPrice}</span>
+                </p>
+                <p className="card-content">
                     <span>{car.address.split(',')[1].trim()}</span> | <span>{car.address.split(',')[2].trim()}</span> | <span>{car.rentalCompany}</span> | <span>{car.type}</span> | <span>{car.make}</span> | <span>{car.mileage}</span> | <span>{car.functionalities[0]}</span>
                 </p>
             </div>
