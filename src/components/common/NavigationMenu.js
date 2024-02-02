@@ -5,7 +5,7 @@ import '../../styles/NavStyles.css';
 function Navigation() {
     return (
         <nav className="navbar">
-            <NavLink exact to="/">Головна</NavLink>
+            <NavLink exact="true" to="/">Головна</NavLink>
             <ul>
                 <li>
                     <NavLink to="/catalog">Каталог</NavLink>

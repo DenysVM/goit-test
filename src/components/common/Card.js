@@ -1,9 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../../actions/favoritesActions';
+import Modal from '../common/Modal/Modal';
+import useModal from '../../hooks/useModal';
 import '../../styles/Card.css';
 
 function Card({ car }) {
+    const { isModalOpen, open, close } = useModal();
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites);
     const isFavorite = favorites.includes(car.id);
@@ -24,7 +27,7 @@ function Card({ car }) {
                     {isFavorite ? '❤️' : '🤍'}
                 </div>
             </div>
-            <div>
+            <div className="card-details">
                 <p className="car">
                     <span>
                         {car.make} <span style={{ color: '#3470FF' }}>{car.model}</span>, {car.year}
@@ -35,7 +38,8 @@ function Card({ car }) {
                     <span>{car.address.split(',')[1].trim()}</span> | <span>{car.address.split(',')[2].trim()}</span> | <span>{car.rentalCompany}</span> | <span>{car.type}</span> | <span>{car.make}</span> | <span>{car.mileage}</span> | <span>{car.functionalities[0]}</span>
                 </p>
             </div>
-            <button className="learn-more-button">Learn more</button>
+            <button className="learn-more-button" onClick={open}>Learn more</button>
+            <Modal isOpen={isModalOpen} car={car} onClose={close} />
         </div>
     );
 }
