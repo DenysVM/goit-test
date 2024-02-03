@@ -1,10 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import favoritesReducer from '../reducers/favoritesReducer';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import rootReducer from '../reducers/rootReducer';
 
-const store = configureStore({
-    reducer: {
-        favorites: favoritesReducer,
-    },
+const persistConfig = {
+    key: 'root',
+    storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+    reducer: persistedReducer,
 });
 
-export default store;
+export const persistor = persistStore(store);
