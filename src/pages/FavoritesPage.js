@@ -1,10 +1,10 @@
 import React from 'react';
+import FavoritesComponent from '../components/FavoritesComponent';
 
 function FavoritesPage() {
     return (
         <div>
-            <h2>Favorites Page</h2>
-
+            <FavoritesComponent />
         </div>
     );
 }
