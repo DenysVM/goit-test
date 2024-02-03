@@ -1,8 +1,8 @@
 .home-page {
-  margin: 20px; /* Додайте бажаний маржин для зсуву тексту від країв сторінки */
-  padding: 10px; /* Додайте бажаний відступ від тексту до країв блоку */
-  background-color: #fff; /* Задайте бажаний колір фону */
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Додайте тінь для блоку */
+  margin: 20px; 
+  padding: 10px; 
+  background-color: #fff; 
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .home-page h2 {
