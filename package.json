@@ -2,6 +2,7 @@
   "name": "goit-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://denysvm.github.io/goit-test/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
     "@testing-library/jest-dom": "^5.17.0",
@@ -19,7 +20,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build --subfolder",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
