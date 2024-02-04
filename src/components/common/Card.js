@@ -4,6 +4,10 @@ import { addToFavorites, removeFromFavorites } from '../../actions/favoritesActi
 import Modal from '../common/Modal/Modal';
 import useModal from '../../hooks/useModal';
 import '../../styles/Card.css';
+import active from './assets/active.svg';
+import normal from './assets/normal.svg';
+
+
 
 function Card({ car }) {
     const { isModalOpen, open, close } = useModal();
@@ -24,7 +28,7 @@ function Card({ car }) {
             <div className="card-image-container">
                 <img className="card-image" src={car.img} alt={`${car.make} ${car.model}, ${car.year}`} />
                 <div className={`favorite-icon ${isFavorite ? 'favorite' : ''}`} onClick={toggleFavorite}>
-                    {isFavorite ? '❤️' : '🤍'}
+                    {isFavorite ? <img src={active} alt="Filled Heart" /> : <img src={normal} alt="Outline Heart" />}
                 </div>
             </div>
             <div className="card-details">
