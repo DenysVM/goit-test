@@ -16,7 +16,6 @@ function Modal({ isOpen, car, onClose }) {
             document.body.classList.remove('no-scroll');
         }
 
-        // Удаление класса при размонтировании компонента
         return () => document.body.classList.remove('no-scroll');
     }, [isOpen]);
     if (!isOpen || !car) return null;
