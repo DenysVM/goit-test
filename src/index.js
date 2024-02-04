@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/goit-test"> {/* Укажите basename здесь */}
+        <BrowserRouter basename="/goit-test">
           <App />
         </BrowserRouter>
       </PersistGate>
