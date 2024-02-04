@@ -18,7 +18,7 @@ function FiltersComponent({ makes = [], priceRange = [], onFilterChange, onSearc
                 <select id="car-price" onChange={(e) => onFilterChange('price', e.target.value)} defaultValue="">
                     <option value="">To $</option>
                     {priceRange.map((range, index) => (
-                        <option key={index} value={range}>{`Up to $${range}`}</option>
+                        <option key={index} value={range}>{range}</option>
                     ))}
                 </select>
             </div>

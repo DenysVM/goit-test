@@ -18,7 +18,7 @@ function CatalogComponent() {
     const [priceOptions, setPriceOptions] = useState([]);
 
     useEffect(() => {
-        carsAPI.fetchCars().then((data) => {
+        carsAPI.fetchAllCars().then((data) => {
             setCars(data);
             setFilteredCars(data);
             setMakes([...new Set(data.map((car) => car.make))].sort());
