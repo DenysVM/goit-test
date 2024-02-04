@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../src/store/store';
 import Header from './components/common/NavigationMenu';
@@ -12,14 +12,12 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <Router>
-          <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/catalog" element={<CatalogPage />} />
-            <Route path="/favorites" element={<FavoritesPage />} />
-          </Routes>
-        </Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+        </Routes>
       </Provider>
     </div>
   );
