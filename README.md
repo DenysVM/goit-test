@@ -20,3 +20,4 @@ This application can be used by car rental companies to provide an online platfo
 Denys Muratov - muratov.d@gmail.com
 
 Project Link: https://github.com/DenysVM/goit-test
+Web site Link: https://denysvm.github.io/goit-test/
