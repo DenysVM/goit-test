@@ -5,36 +5,49 @@ import carsAPI from '../api/carsAPI';
 import '../styles/CatalogComponent.css';
 
 function CatalogComponent() {
-    const [cars, setCars] = useState([]);
-    const [makes, setMakes] = useState([]);
+    const [allCars, setAllCars] = useState([]);
     const [filteredCars, setFilteredCars] = useState([]);
-    const [visibleCars, setVisibleCars] = useState(12);
+    const [currentPage, setCurrentPage] = useState(1);
     const [filters, setFilters] = useState({
         make: '',
         price: '',
         mileageFrom: '',
         mileageTo: ''
     });
+    const [hasMore, setHasMore] = useState(true);
+    const [makes, setMakes] = useState([]);
     const [priceOptions, setPriceOptions] = useState([]);
 
     useEffect(() => {
-        carsAPI.fetchAllCars().then((data) => {
-            setCars(data);
-            setFilteredCars(data);
-            setMakes([...new Set(data.map((car) => car.make))].sort());
+        carsAPI.fetchCars(currentPage).then((data) => {
+            const newCars = currentPage === 1 ? data : [...allCars, ...data];
+            setAllCars(newCars);
 
-            const maxPrice = Math.max(...data.map(car => parseFloat(car.rentalPrice.substring(1))));
-            const options = Array.from({ length: Math.ceil(maxPrice / 10) }, (_, i) => (i + 1) * 10);
-            setPriceOptions(options);
+            if (currentPage === 1 || Object.values(filters).every(value => !value)) {
+                setFilteredCars(newCars);
+            }
+
+            setHasMore(data.length === 12);
+            updateFilters(newCars);
         });
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage]);
+
+    const updateFilters = (cars) => {
+        const uniqueMakes = [...new Set(cars.map(car => car.make))].sort();
+        setMakes(uniqueMakes);
+
+        const maxPrice = Math.max(...cars.map(car => parseFloat(car.rentalPrice.substring(1))));
+        const options = Array.from({ length: Math.ceil(maxPrice / 10) }, (_, i) => (i + 1) * 10);
+        setPriceOptions(options);
+    };
 
     const handleFilterChange = (filterName, value) => {
-        setFilters((prevFilters) => ({ ...prevFilters, [filterName]: value }));
+        setFilters(prevFilters => ({ ...prevFilters, [filterName]: value }));
     };
 
     const handleSearch = () => {
-        let newFilteredCars = cars.filter(car => {
+        let newFilteredCars = allCars.filter(car => {
             const price = parseFloat(car.rentalPrice.substring(1));
             const mileage = parseInt(car.mileage, 10);
             return (!filters.make || car.make === filters.make) &&
@@ -42,13 +55,11 @@ function CatalogComponent() {
                 (!filters.mileageFrom || mileage >= filters.mileageFrom) &&
                 (!filters.mileageTo || mileage <= filters.mileageTo);
         });
-
         setFilteredCars(newFilteredCars);
-        setVisibleCars(12);
     };
 
     const loadMore = () => {
-        setVisibleCars(visibleCars + 12);
+        setCurrentPage(prevPage => prevPage + 1);
     };
 
     return (
@@ -61,11 +72,11 @@ function CatalogComponent() {
             />
             <div className="catalog">
                 <div className="cards-grid">
-                    {filteredCars.slice(0, visibleCars).map(car => (
+                    {filteredCars.map(car => (
                         <Card key={car.id} car={car} />
                     ))}
                 </div>
-                {visibleCars < filteredCars.length && (
+                {hasMore && (
                     <button className="load-more-button" onClick={loadMore}>
                         Load more
                     </button>

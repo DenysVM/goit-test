@@ -13,10 +13,6 @@ const carsAPI = {
             responses.map((response) => response.data)
         );
     },
-
-    fetchAllCars: () => {
-        return axios.get(BASE_URL).then((response) => response.data);
-    },
 };
 
 export default carsAPI;
