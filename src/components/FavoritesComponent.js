@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import carsAPI from '../api/carsAPI';
-import Card from '..//components/common/Card';
+import Card from '../components/common/Card';
 import '../styles/FavoritesPage.css';
 
 function FavoritesComponent() {
@@ -27,11 +27,19 @@ function FavoritesComponent() {
 
     return (
         <div className="favorites-container">
-            <div className="favorites-cards">
-                {favoriteCars.map((car) => (
-                    <Card key={car.id} car={car} />
-                ))}
-            </div>
+            {favoriteCars.length > 0 ? (
+                <ul className="favorites-cards">
+                    {favoriteCars.map((car) => (
+                        <li key={car.id}>
+                            <Card car={car} />
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <div className="placeholder-container">
+                    <p>У вашому списку обраних авто немає.</p>
+                </div>
+            )}
         </div>
     );
 }

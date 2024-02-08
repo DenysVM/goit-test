@@ -71,11 +71,13 @@ function CatalogComponent() {
                 onSearch={handleSearch}
             />
             <div className="catalog">
-                <div className="cards-grid">
+                <ul className="cards-grid">
                     {filteredCars.map(car => (
-                        <Card key={car.id} car={car} />
+                        <li key={car.id}>
+                            <Card car={car} />
+                        </li>
                     ))}
-                </div>
+                </ul>
                 {hasMore && (
                     <button className="load-more-button" onClick={loadMore}>
                         Load more

@@ -5,8 +5,6 @@
   "homepage": "https://denysvm.github.io/goit-test/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
     "react": "^18.2.0",
@@ -22,7 +20,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
