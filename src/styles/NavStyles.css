@@ -45,7 +45,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar .active a {
+.navbar .active {
   color: #ff5733;
   background-color: #fff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);

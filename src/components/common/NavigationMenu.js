@@ -5,13 +5,13 @@ import '../../styles/NavStyles.css';
 function Navigation() {
     return (
         <nav className="navbar">
-            <NavLink exact="true" to="/">Головна</NavLink>
+            <NavLink to="/" activeclassname="active">Головна</NavLink>
             <ul>
                 <li>
-                    <NavLink to="/catalog">Каталог</NavLink>
+                    <NavLink to="/catalog" activeclassname="active">Каталог</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/favorites">Обране</NavLink>
+                    <NavLink to="/favorites" activeclassname="active">Обране</NavLink>
                 </li>
             </ul>
         </nav>
