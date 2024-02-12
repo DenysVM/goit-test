@@ -1,17 +1,20 @@
 .filters {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 100%;
   gap: 15px;
+  box-sizing: border-box;
 }
 
 .filter-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
 }
 
 .filter-group label {
@@ -22,6 +25,7 @@
 
 .filters input,
 .filters select {
+  width: 100%;
   height: 48px;
   border: none;
   border-radius: 14px;
@@ -31,11 +35,6 @@
   padding-left: 18px;
   color: #121417;
 }
-
-.filters .filter-group:last-child {
-  margin-right: 0;
-}
-
 .mileage-group {
   display: flex;
   align-items: center;
@@ -47,12 +46,6 @@
   display: flex;
   align-items: center;
   gap: -1px;
-}
-
-.input-mileage {
-  width: 160px;
-  height: 48px;
-  padding: 0;
 }
 
 .input-mileage:first-child {
@@ -76,6 +69,19 @@
   background-color: #dcdcdc;
   height: 40px;
 }
+.mileage-inputs,
+.search-button {
+  width: 100%;
+}
+
+.input-mileage {
+  flex: 1;
+  margin-right: 5px;
+}
+
+.input-mileage:last-child {
+  margin-right: 0;
+}
 
 .search-button {
   width: 136px;
@@ -88,9 +94,40 @@
   border-radius: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
-  align-self: flex-end;
 }
 
 .search-button:hover {
   background-color: #2658c7;
+}
+
+@media (min-width: 768px) {
+  .filters {
+    flex-direction: row;
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #car-make {
+    width: 224px;
+  }
+
+  #car-price {
+    width: 125px;
+  }
+
+  .mileage-inputs {
+    width: 320px;
+  }
+
+  .filters .filter-group:last-child {
+    margin-right: 0;
+  }
+
+  .search-button {
+    align-self: flex-end;
+  }
 }
