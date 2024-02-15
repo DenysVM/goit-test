@@ -1,0 +1,45 @@
+.bottom-sheet-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.bottom-sheet-content {
+  font-family: Manrope, sans-serif;
+  background-color: white;
+  width: 100%;
+  height: 98%;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  position: relative;
+}
+
+.bottom-sheet-grip-indicator {
+  height: 4px;
+  width: 35px;
+  background-color: #ccc;
+  border-radius: 2px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 16px;
+}
+
+.modal-car-image {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 20px;
+}

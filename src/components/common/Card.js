@@ -6,11 +6,15 @@ import useModal from '../../hooks/useModal';
 import '../../styles/Card.css';
 import active from './assets/active.svg';
 import normal from './assets/normal.svg';
+import useMediaQuery from '..//../hooks/useMediaQuery';
+import BottomSheet from '../common/BottomSheet/BottomSheet';
+
 
 
 
 function Card({ car }) {
     const { isModalOpen, open, close } = useModal();
+    const isMobile = useMediaQuery('(max-width: 768px)');
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites);
     const isFavorite = favorites.includes(car.id);
@@ -43,7 +47,11 @@ function Card({ car }) {
                 </p>
             </div>
             <button className="learn-more-button" onClick={open}>Learn more</button>
-            <Modal isOpen={isModalOpen} car={car} onClose={close} />
+            {isMobile ? (
+                <BottomSheet isOpen={isModalOpen} car={car} onClose={close} />
+            ) : (
+                <Modal isOpen={isModalOpen} car={car} onClose={close} />
+            )}
         </div>
     );
 }
