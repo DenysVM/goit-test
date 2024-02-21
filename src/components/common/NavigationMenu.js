@@ -18,7 +18,7 @@ function Navigation() {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [menuRef]);
+    }, []);
 
     const handleToggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -29,7 +29,7 @@ function Navigation() {
     };
 
     return (
-        <nav className="navbar">
+        <nav className="navbar" ref={menuRef}>
             {!isDesktop && (
                 <button className="menu-button" aria-label="Toggle menu" onClick={handleToggleMenu}>
                     <span className={`bar ${menuOpen ? 'open' : ''}`}></span>
@@ -37,14 +37,14 @@ function Navigation() {
                     <span className={`bar ${menuOpen ? 'open' : ''}`}></span>
                 </button>
             )}
-            <div className={`menu-content ${!isDesktop && menuOpen ? 'show' : 'hide'}`} ref={menuRef}>
-                <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')} onClick={handleCloseMenu}>Головна</NavLink>
+            <div className={`menu-content ${menuOpen ? 'show' : 'hide'}`}>
+                <NavLink to="/" onClick={handleCloseMenu}>Головна</NavLink>
                 <ul>
-                    <li onClick={handleCloseMenu}>
-                        <NavLink to="/catalog" className={({ isActive }) => (isActive ? 'active' : '')}>Каталог</NavLink>
+                    <li>
+                        <NavLink to="/catalog" onClick={handleCloseMenu}>Каталог</NavLink>
                     </li>
-                    <li onClick={handleCloseMenu}>
-                        <NavLink to="/favorites" className={({ isActive }) => (isActive ? 'active' : '')}>Обране</NavLink>
+                    <li>
+                        <NavLink to="/favorites" onClick={handleCloseMenu}>Обране</NavLink>
                     </li>
                 </ul>
             </div>
