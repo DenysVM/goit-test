@@ -4,10 +4,11 @@ import { animated, useSpring } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import '../../../styles/BottomSheet.css';
 import { useEscapeKey, useClickOutside } from '../../../utils/keyboardUtils';
+import { useLockBodyScroll } from '../../../utils/useLockBodyScroll';
 
 function BottomSheet({ isOpen, car, onClose }) {
     const ref = useRef();
-
+    useLockBodyScroll(isOpen);
     useEscapeKey(onClose);
     useClickOutside(ref, onClose);
 

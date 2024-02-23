@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import '../../../styles/Modal.css';
 import { useEscapeKey, useClickOutside } from '../../../utils/keyboardUtils';
+import { useLockBodyScroll } from '../../../utils/useLockBodyScroll';
 import '..//..//..//styles/Modal.css'
 
 function Modal({ isOpen, car, onClose }) {
@@ -9,15 +10,8 @@ function Modal({ isOpen, car, onClose }) {
 
     useEscapeKey(onClose);
     useClickOutside(modalRef, onClose);
-    useEffect(() => {
-        if (isOpen) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
+    useLockBodyScroll(isOpen);
 
-        return () => document.body.classList.remove('no-scroll');
-    }, [isOpen]);
     if (!isOpen || !car) return null;
 
     return ReactDOM.createPortal(

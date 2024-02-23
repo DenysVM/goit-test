@@ -8,11 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-}
-
-.no-scroll {
-  overflow: hidden;
+  z-index: 1005;
 }
 
 .modal-content {
@@ -26,6 +22,7 @@
   height: 750px;
   display: flex;
   flex-direction: column;
+  margin-top: 110px;
 }
 
 .modal-close-button {
