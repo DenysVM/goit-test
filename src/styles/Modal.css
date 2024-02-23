@@ -22,7 +22,6 @@
   height: 750px;
   display: flex;
   flex-direction: column;
-  margin-top: 110px;
 }
 
 .modal-close-button {
